@@ -1,4 +1,4 @@
-list = {'Banan': 23.4, 'Milk': 20.0, 'Bread': 12.0}
+my_list = {'Banyan': 23.4, 'Milk': 20.0, 'Bread': 12.0}
 while True:
     print('1. Додати запис про покупку:')
     print('2. Список всіх покупок:')
@@ -12,22 +12,28 @@ while True:
         continue
 
     elif choice == '1':
-        l = str(input('Введіть назву покупки: '))
+        y = str(input('Введіть назву покупки: '))
         x = float(input('Введіть вартість покупки: '))
-        list.update({l: x})
+        my_list.update({y: x})
         print(list)
 
     elif choice == '2':
-        print(list)
+        print(my_list)
 
     elif choice == '3':
-        print('Сума витрат:', sum(list.values()))
+        print('Сума витрат:', sum(my_list.values()))
 
     elif choice == '4':
-        print('Найдорожча покупка', max(list.values()))
+        print('Найдорожча покупка', max(my_list.values()))
 
     elif choice == '5':
-        print()
+        a = str(input('Введіть назву покупки:'))
+        for i, j in my_list.items():
+            if my_list.get(i):
+                i = a
+                print(i, j)
+            else:
+                print('Такого продукту немає')
 
     elif choice == '6':
         break
