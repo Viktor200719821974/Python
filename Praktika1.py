@@ -27,11 +27,17 @@ while True:
         print('Найдорожча покупка', max(my_list.values()))
 
     elif choice == '5':
-        a = str(input('Введіть назву покупки:'))
-        for i, j in my_list.items():
-            if my_list.get(i):
-                i = a
-                print(i, j)
+        search_item = str(input('Введіть назву покупки:'))
+        listByItem = {}
+        print(search_item)
+        for key, value in my_list.items():
+            if key == search_item:
+                value = str(value)
+                results = key + " " + value
+                print(results)
+                value2 = float(value)
+                listByItem[value] = listByItem.get(key, 0) + value2
+                print(listByItem)
             else:
                 print('Такого продукту немає')
 
