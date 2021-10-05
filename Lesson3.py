@@ -3,23 +3,35 @@
 # - второй возвращает все записи
 # запишите 5 тудушек
 # и выведете все
+x1 = '07:00 Прокинутися та приготувати сніданок'
+x2 = '08:00 Одягнутися та вийти з дому'
+x3 = '09:00 Доїхати до праці'
+x4 = '17:00 Закінчити працю та виїхати додому'
+x5 = '18:00 Повечеряти, прийняти душ, зайнятися своїми справами, лягти спати'
+
+
 def notebook():
     todo_list = []
-    todo = input()
-    print(todo_list)
 
     def add_todo(*args):
-        x = todo_list.append(args)
+        global x1, x2, x3, x4, x5
+        todo_list.append(x1)
+        todo_list.append(x2)
+        todo_list.append(x3)
+        todo_list.append(x4)
+        todo_list.append(x5)
 
         def get_all():
-            nonlocal x
+            for i in todo_list:
+                print(i)
 
         get_all()
 
-    add_todo(todo)
+    add_todo(x1, x2, x3, x4, x5)
+    return todo_list
 
 
-print(notebook())
+notebook()
 
 # 2) протипизировать первое задание
 # 3) С помощью lambda функции извлеките из списка числа, делимые на 15 без остатка.
