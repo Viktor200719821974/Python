@@ -33,32 +33,37 @@ x5 = '18:00 Повечеряти, прийняти душ, зайнятися с
 # notebook()
 
 # 2) протипизировать первое задание
-import typing
-from typing import Callable, List, Tuple, Dict
+from typing import Callable, Union
+
+Value = Union[Callable[[str], None], Callable[[], list[str]]]
 
 
-def notebook() -> List:
-    todo_list = []
+def notebook() -> dict[str, Value]:
+    todo_list: list[str] = []
 
-    def add_todo(*args: str) -> None:
-        global x1, x2, x3, x4, x5
-        todo_list.append(x1)
-        todo_list.append(x2)
-        todo_list.append(x3)
-        todo_list.append(x4)
-        todo_list.append(x5)
+    def get_all() -> list[str]:
+        nonlocal todo_list
+        return todo_list
 
-        def get_all():
-            for i in todo_list:
-                print(i)
+    def add_todo(todo: str) -> None:
+        nonlocal todo_list
+        todo_list.append(todo)
 
-        get_all()
-
-    add_todo()
-    return todo_list
+    return {
+        "get_all": get_all,
+        "add_todo": add_todo
+    }
 
 
-notebook()
+notebook1 = notebook()
+notebook1['add_todo']("first")
+notebook1['add_todo']("second")
+print(notebook1.get('get_all')())
+
+notebook2 = notebook()
+notebook2['add_todo']("first2")
+notebook2['add_todo']("second2")
+print(notebook2.get('get_all')())
 
 # 3) С помощью lambda функции извлеките из списка числа, делимые на 15 без остатка.
 # my_list = [45, 56, 67, 776, 5677, 6887, 667, 788, 300]
