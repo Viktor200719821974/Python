@@ -8,6 +8,46 @@
 # >, < меньше или больше
 # при вызове метода len() подсчитывать сумму сторон
 
+# class Rectangle:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#         self.item = 2 * (x + y)
+#
+#     def area(self):
+#         S = 2 * (self.x + self.y)
+#         print('Area :', S)
+#         return S
+#
+#     def __add__(self, other):
+#         return self.area() + other.area()
+#
+#     def __sub__(self, other):
+#         return self.area() - other.area()
+#
+#     def __eq__(self, other):
+#         return self.area() == other.area()
+#
+#     def __ne__(self, other):
+#         return self.area() != other.area()
+#
+#     def __gt__(self, other):
+#         return self.area() > other.area()
+#
+#     def __lt__(self, other):
+#         ordering1 = self.area() < other.area()
+#         return print(ordering1)
+#
+#     def __len__(self):
+#         return len(self.item)
+#
+#
+# rectangle1 = Rectangle(2, 3)
+# rectangle1.area()
+# rectangle2 = Rectangle(6, 7)
+# rectangle2.area()
+# print(rectangle1.area() < rectangle2.area())
+
 ###############################################################################
 # 1)Створити пустий list
 # 2)Створити клас Letter
@@ -20,8 +60,37 @@
 ###############################################################################
 # создать класс Human(name, age) создать два класса Prince и Cinderella:
 # у золушки должно быть имя возраст и размер ноги
-# у принца имя, возраст и размер найденой туфельки, так же должен быть метод который принимает лист золушек и ищет  ту
-# самую
-#
+# у принца имя, возраст и размер найденой туфельки, так же должен быть метод который принимает лист золушек и ищет  ту самую
 # класса золушки должна быть переменная count которая будет считать сколько экземпляров класса золушка было создано
 # и метод класса который будет показывать это количество
+class Human:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+        # def find_cinderella()
+
+
+class Prince(Human):
+    def __init__(self, name, age, size_find):
+        super().__init__(name, age)
+        self.size_find = size_find
+
+
+class Cinderella(Human):
+    def __init__(self, name, age, size):
+        super().__init__(name, age)
+        self.size = size
+
+
+prince = Prince(name='Ivan', age=20, size_find=34)
+cinderella1 = Cinderella(name='Ola', age=15, size=36)
+cinderella2 = Cinderella(name='Tanya', age=23, size=35)
+cinderella3 = Cinderella(name='Ira', age=22, size=38)
+cinderella4 = Cinderella(name='Lena', age=24, size=39)
+cinderella5 = Cinderella(name='Rita', age=20, size=40)
+cinderella6 = Cinderella(name='Yana', age=18, size=37)
+cinderella7 = Cinderella(name='Masha', age=19, size=34)
+cinderella8 = Cinderella(name='Lesya', age=17, size=35)
+cinderella9 = Cinderella(name='Vera', age=25, size=42)
+cinderella10 = Cinderella(name='Tonya', age=17, size=41)
