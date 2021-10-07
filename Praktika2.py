@@ -34,11 +34,11 @@
 # 'g' -> 1
 # '5' -> 1
 # '4' -> 2
-def check_freq(str):
-    freq = {}
-    for c in str:
-        freq[c] = str.count(c)
-    return freq
+def check_freq(items):
+    my_string = {}
+    for i in items:
+        my_string[i] = items.count(i)
+    return my_string
 
 
 print(check_freq("as 23 fdfdg544"))
