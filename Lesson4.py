@@ -15,7 +15,7 @@
 #         self.item = 2 * (x + y)
 #
 #     def area(self):
-#         S = 2 * (self.x + self.y)
+#         S = self.x * self.y
 #         print('Area :', S)
 #         return S
 #
