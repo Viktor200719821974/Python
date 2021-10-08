@@ -35,8 +35,7 @@
 #         return self.area() > other.area()
 #
 #     def __lt__(self, other):
-#         ordering1 = self.area() < other.area()
-#         return print(ordering1)
+#         return print(self.area() < other.area())
 #
 #     def __len__(self):
 #         return len(self.item)
