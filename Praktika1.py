@@ -28,18 +28,15 @@ while True:
 
     elif choice == '5':
         search_item = str(input('Введіть назву покупки:'))
-        # listByItem = {}
-        # print(search_item)
+        print(search_item)
         for key, value in my_list.items():
             if key == search_item:
                 value = str(value)
                 results = key + " " + value
-                # print(results)
-                # value2 = float(value)
-                # listByItem[value] = listByItem.get(key, 0) + value2
-                # print(listByItem)
-            else:
-                print('Такого продукту немає')
+                print(results)
+                break
+            # else:
+            #     print('Такого продукту немає')
 
     elif choice == '6':
         break
