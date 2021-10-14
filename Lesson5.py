@@ -52,8 +52,6 @@
 #     #      menu1 = Menu('Banana', 23.4)
 #     #      menu2 = Menu('Milk', 20.0
 #
-#     # Menu.book_write(choice)
-#     # Menu.add_item()
 #
 #     # def add_item1():
 #     #     key = input('Введіть назву покупки: ')
@@ -73,8 +71,7 @@
 #         Menu.add_item(key, value)
 #     elif choice == 6:
 #         break
-#     # else:
-#     #     print('Введіть число від 1-6')
+
 
 a = str(input())
 b = float(input())
