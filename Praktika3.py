@@ -10,14 +10,9 @@ with open('users.txt', 'r') as file:
 
 f = [x for xs in d for x in xs]
 
-d = {}
-a = iter(['name', 'age', 'gender'])
-c = iter(f)
-k = list(zip(a, c))
-for (x, y) in k:
-    if x in d:
-        d[x] = d[x] + y
-    else:
-        d[x] = y
-print(d)
-
+d = []
+a = ['name', 'age', 'gender']
+b = a * int(len(f) / len(a))
+k = dict(zip(b, f))
+with open('my_file.json', 'w') as file:
+    json.dump(k, file)
