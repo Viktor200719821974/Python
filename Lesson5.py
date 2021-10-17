@@ -1,81 +1,81 @@
-# while True:
-#     print('1. Додати запис про покупку:')
-#     print('2. Список всіх покупок:')
-#     print('3. Сума вартості всіх покупок:')
-#     print('4. Найдорожча покупка:')
-#     print('5. Пошук по назві покупки:')
-#     print('6. Вихід:')
-#
-#
-#     class Menu:
-#         def __init__(self, a, b):
-#             self.a = a
-#             self.b = b
-#             self.fileList = {}
-#
-#         def add_item(self):
-#             # key = input('Введіть назву покупки: ')
-#             # value = input('Введіть вартість покупки: ')
-#             res = dict(zip(self.a, self.b))
-#             with open('list.txt', 'a') as file:
-#                 file.write(res)
-#
-#
-#     #
-#     #     def print_list(self):
-#     #         print(self.fileList)
-#     #
-#     #
-#     #     def sum_item(self):
-#     #         print('Сума витрат:', sum(self.fileList.values()))
-#     #
-#     #
-#     #     def max_value(self):
-#     #         print('Найдорожча покупка', max(self.fileList.values()))
-#     #
-#     #
-#     #     def book_write(self, x):
-#     #         if x not in '123456':
-#     #             print('Введіть число від 1-6')
-#     #         elif x == 1:
-#     #             self.add_item()
-#     #         elif x == 2:
-#     #             self.print_list()
-#     #         elif x == 3:
-#     #             self.sum_item()
-#     #         elif x == 4:
-#     #             self.max_value()
-#     #         elif x == 6:
-#     #             pass
-#     #
-#     #
-#     #      menu1 = Menu('Banana', 23.4)
-#     #      menu2 = Menu('Milk', 20.0
-#
-#
-#     # def add_item1():
-#     #     key = input('Введіть назву покупки: ')
-#     #     value = input('Введіть вартість покупки: ')
-#     #     res = {}
-#     #     res = dict(zip(key, value))
-#     #     with open('list.txt', 'a') as file:
-#     #         file.write(res)
-#     #
-#     #     add_item1()
-#     choice = input('Зробіть свій вибір: ')
-#     if choice not in '123456':
-#         continue
-#     elif choice == 1:
-#         key = str(input('Введіть назву покупки: '))
-#         value = float(input('Введіть вартість покупки: '))
-#         Menu.add_item(key, value)
-#     elif choice == 6:
-#         break
+import json
 
 
-a = str(input())
-b = float(input())
-res = {}
-res[a] = b
-with open('items.txt', 'w') as file:
-    file.write(repr(res))
+class NoteBook:
+    def __init__(self, filelist:str):
+            self.__fileList = f'{filelist}.json'
+
+    def __parse_file(self) -> list[dict]:
+            try:
+                with open(self.__fileList) as file:
+                    return json.load(file)
+            except:
+                return []
+
+    def __save(self, data: list[dict]):
+        with open(self.__fileList, 'w') as file:
+                json.dump(data, file)
+
+    def add_item(self):
+            key = input('Введіть назву покупки: ')
+            value = input('Введіть вартість покупки: ')
+            if not value.isdigit():
+                print('input ERROR')
+            key = self.__parse_file()
+            print(key)
+            key.append(dict(key = key, value=float(value)))
+            self.__save(key)
+
+    def print_list(self):
+        key = self.__parse_file()
+        if not key:
+            print('NOT FOUND')
+        for i in key:
+            print(i)
+
+
+    def sum_value(self):
+            print('Сума витрат:', sum([i['value'] for i in self.__parse_file()]))
+
+
+    def max_value(self):
+            print('Найдорожча покупка', max([i['value'] for i in self.__parse_file()]))
+
+
+    def search_key(self):
+        key = input('Введіть назву покупки:')
+        for i in self.__parse_file():
+           if i ['key'] == key:
+            print(i)
+            break
+        print('NOT FOUND')
+
+noteBook = NoteBook('my_notebook')
+
+while True:
+    print('1. Додати запис про покупку.')
+    print('2. Список всіх покупок.')
+    print('3. Сума вартості всіх покупок.')
+    print('4. Найдорожча покупка.')
+    print('5. Пошук по назві покупки.')
+    print('6. Вихід.')
+
+    choice = input('Зробіть свій вибір: ')
+
+    if choice not in ['1','2','3','4','5','6']:
+        continue
+
+    elif choice == '1':
+        noteBook.add_item()
+    elif choice == '2':
+        noteBook.print_list()
+    elif choice == '3':
+        noteBook.sum_value()
+    elif choice == '4':
+        noteBook.max_value()
+    elif choice == '5':
+        noteBook.search_key()
+    elif choice == '6':
+        break
+
+
